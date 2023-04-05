@@ -3,7 +3,7 @@ function filtrarValor(transacao: Transacao): transacao is TransacaoValor {
   return transacao.valor !== null;
 }
 
-export default class Statistics {
+export default class Estatiscas {
   private transacoes;
   total;
   constructor(transacoes: Transacao[]) {

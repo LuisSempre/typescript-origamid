@@ -1,19 +1,19 @@
-import Statistics from "./Statistics.js";
+import Estatiscas from "./Estatiscas.js";
 import fetchData from "./fetchData.js";
-import normalizeTransaction from "./normalizeTransaction.js";
+import normalizarTransacao from "./normalizarTransacao.js";
 
 async function handleData() {
   const data = await fetchData<TransacaoAPI[]>(
     "https://api.origamid.dev/json/transacoes.json?"
   );
   if (!data) return;
-  const transacoes = data.map(normalizeTransaction);
+  const transacoes = data.map(normalizarTransacao);
   preencherTabela(transacoes);
   preencherEstatisticas(transacoes);
 }
 
 function preencherEstatisticas(transacoes: Transacao[]): void {
-  const data = new Statistics(transacoes);
+  const data = new Estatiscas(transacoes);
 
   const totalElement = document.querySelector<HTMLElement>("#total span");
   if (totalElement) {

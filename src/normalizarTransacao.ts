@@ -1,4 +1,4 @@
-import coinForNumber from "./coinForNumber";
+import moedaParaNumero from "./moedaParaNumero.js";
 import stringToDate from "./stringToDate.js";
 
 declare global {
@@ -33,7 +33,7 @@ declare global {
   }
 }
 
-export default function normalizeTransaction(
+export default function normalizarTransacao(
   transacao: TransacaoAPI
 ): Transacao {
   return {
@@ -43,7 +43,7 @@ export default function normalizeTransaction(
     status: transacao.Status,
     email: transacao.Email,
     moeda: transacao["Valor (R$)"],
-    valor: coinForNumber(transacao["Valor (R$)"]),
+    valor: moedaParaNumero(transacao["Valor (R$)"]),
     pagamento: transacao["Forma de Pagamento"],
     novo: Boolean(transacao["Cliente Novo"]),
   };
